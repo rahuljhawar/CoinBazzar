@@ -1,0 +1,102 @@
+<!-- HEADER PART -->
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  bg-white border-bottom box-shadow">
+    <div class="container">
+        <a class="navbar-brand" href="/" style="font-size:34px;letter-spacing:2px;">
+            Coin
+            <span style="color: #f1e05a">Bazaar</span>
+        </a>
+        <div class="pull-right">
+            <button class="btn btn-sm btn-light" ng-click="coinCtrl.getPrev100()" ng-disabled="coinCtrl.start == 0">&larr; Previous 100 </button>
+            <button class="btn btn-sm btn-primary" ng-click="coinCtrl.getNext100()" ng-disabled="coinCtrl.coins.length < 100">Next 100 &rarr;</button>
+        </div>
+    </div>
+</div>
+<div class="d-flex flex-column flex-md-row align-items-center  px-md-4 mb-3 bg-white border-bottom box-shadow">
+    <div class="container">
+        <div class="row ">
+            <div class="col-3 text-center ">
+                <b>Markets</b> : {{coinCtrl.globalData.active_markets}}
+            </div>
+            <div class="col-8 text-center">
+                <b>Market Cap</b>: {{coinCtrl.globalData["total_market_cap_"+ coinCtrl.selectedCurrencyLowerCase] | currency:
+                coinCtrl.selectedCurrencySymbol : 0}} /
+                <b>24h Vol</b> : {{coinCtrl.globalData["total_24h_volume_"+ coinCtrl.selectedCurrencyLowerCase] | currency:
+                coinCtrl.selectedCurrencySymbol : 0}}/
+                <b>BTC Dominance</b>: {{coinCtrl.globalData.bitcoin_percentage_of_market_cap}}%
+            </div>
+            <div class="col-1 text-center">
+                <select ng-model="coinCtrl.selectedCurrency" ng-change="coinCtrl.getAllCoins()" name="selectedCurrency">
+                    <option selected="selected">USD</option>
+                    <option>AUD</option>
+                    <option>BRL</option>
+                    <option>CAD</option>
+                    <option>CHF</option>
+                    <option>CLP</option>
+                    <option>CNY</option>
+                    <option>CZK</option>
+                    <option>DKK</option>
+                    <option>GBP</option>
+                    <option>EUR</option>
+                    <option>HKD</option>
+                    <option>HUF</option>
+                    <option>IDR</option>
+                    <option>ILS</option>
+                    <option>INR</option>
+                    <option>JPY</option>
+                    <option>KRW</option>
+                    <option>MXN</option>
+                    <option>MYR</option>
+                    <option>NOK</option>
+                    <option>NZD</option>
+                    <option>PHP</option>
+                    <option>PKR</option>
+                    <option>PLN</option>
+                    <option>RUB</option>
+                    <option>SEK</option>
+                    <option>SGD</option>
+                    <option>THB</option>
+                    <option>TRY</option>
+                    <option>TWD</option>
+                    <option>ZAR</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- HEADER END -->
+<!-- TABLE -->
+<div class="container table-responsive-sm">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Market Cap</th>
+                <th scope="col">Price</th>
+                <th scope="col">Volume(24h)</th>
+                <th scope="col">Circulating Supply</th>
+                <th scope="col">Change(24h)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="coin in coinCtrl.coins">
+                <th scope="row">{{coin.rank}}</th>
+                <td>
+                    <i class="cc {{coin.symbol}}" title="coin.symbol"></i>
+                    <a href="" ng-click="coinCtrl.showCustom({id:coin.id,coinName:coin.symbol,currency:coinCtrl.selectedCurrency})">{{coin.name}}</a>
+                </td>
+                <td>{{coin["market_cap_" + coinCtrl.selectedCurrencyLowerCase] | currency: coinCtrl.selectedCurrencySymbol :
+                    0}}
+                </td>
+                <td>{{ coin["price_" + coinCtrl.selectedCurrencyLowerCase] | currency: coinCtrl.selectedCurrencySymbol : 2}}</td>
+                <td>{{coin["24h_volume_" + coinCtrl.selectedCurrencyLowerCase] | currency: coinCtrl.selectedCurrencySymbol :
+                    0}}
+                </td>
+                <td>{{coin.available_supply | number }} {{coin.symbol}}</td>
+                <td ng-class="coin.percent_change_24h > 0 ? 'green' : 'red'">
+                    <i ng-class="coin.percent_change_24h > 0 ? 'fa fa-arrow-up': 'fa fa-arrow-down'"></i>{{coin.percent_change_24h}} %
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="CoinBazaar">
+<base href="/">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>All CryptoCurrencies | CoinBazaar</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- CSS defining icons (required) -->
+    <link rel="stylesheet" href="assets/css/cryptocoins.css">
+    <link rel="stylesheet" href="assets/css/cryptocoins-colors.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+    </style>
+</head>
+
+<body>
+    <!-- loader -->
+    <div id="loaderDiv" loader>
+        <img src="./assets/loading.gif" class="ajax-loader"  width="60" height="60"/>
+    </div>
+    <div ng-cloak ng-view>
+        <!-- Partial views will be updated here -->
+    </div>
+    <!-- all the dependent libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+    <script src="js/angular-modal-service.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+    <script src="angular/app.js"></script>
+    <script src="angular/routes.js"></script>
+
+    <!-- CONTROLLERS -->
+    <script src="angular/controllers/coinsController.js"></script>
+    <script src="angular/controllers/modalController.js"></script>
+
+    <!-- SERVICES -->
+    <script src="angular/services/services.js"></script>
+    <script src="angular/services/currencyService.js"></script>
+</body>
+
+</html>

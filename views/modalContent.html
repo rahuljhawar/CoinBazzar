@@ -1,0 +1,84 @@
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="list-group">
+                    <button type="button" class="list-group-item list-group-item-action active">
+                        <span>
+                            <i class="cc {{modalCtrl.detailView.symbol}}"></i>
+                            <b style="font-size:28px;">{{modalCtrl.detailView.name}}({{modalCtrl.detailView.symbol}})</b>
+                        </span>
+                        <span class="pull-right">
+                            <b style="font-size:24px; color:gold;">{{modalCtrl.detailView["price_" + modalCtrl.selectedCurrencyLowerCase] | currency: modalCtrl.selectedCurrencySymbol
+                                : 2 }}</b>
+                        </span>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <div class="row align-items-center ">
+                            <div class="col-3 ">
+                                <b style="font-size:20px;">Change(%)</b>
+                            </div>
+                            <div class="col-3 text-center">
+                                <p ng-class="modalCtrl.detailView.percent_change_1h > 0 ? 'green' : 'red'">
+                                    <i ng-class="modalCtrl.detailView.percent_change_1h > 0 ? 'fa fa-arrow-up': 'fa fa-arrow-down'"></i>{{modalCtrl.detailView.percent_change_1h}}%</p>
+                                <p>1 hour</p>
+                            </div>
+                            <div class="col-3 text-center">
+                                <p ng-class="modalCtrl.detailView.percent_change_24h > 0 ? 'green' : 'red'">
+                                    <i ng-class="modalCtrl.detailView.percent_change_24h > 0 ? 'fa fa-arrow-up': 'fa fa-arrow-down'"></i>{{modalCtrl.detailView.percent_change_24h}}%</p>
+                                <p>24 hours</p>
+                            </div>
+                            <div class="col-3 text-center">
+                                <p ng-class="modalCtrl.detailView.percent_change_7d > 0 ? 'green' : 'red'">
+                                    <i ng-class="modalCtrl.detailView.percent_change_7d > 0 ? 'fa fa-arrow-up': 'fa fa-arrow-down'"></i>{{modalCtrl.detailView.percent_change_7d}}%</p>
+                                <p>7 days</p>
+                            </div>
+                        </div>
+
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <b style="font-size:20px;">BTC Price</b>
+                        <span class="pull-right">
+                            <b>{{modalCtrl.detailView["price_btc"] | number:8}} BTC
+                        </span>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <b style="font-size:20px;">Volume(24h)</b>
+                        <span class="pull-right">
+                            <b>{{modalCtrl.detailView["24h_volume_" + modalCtrl.selectedCurrencyLowerCase] | currency: modalCtrl.selectedCurrencySymbol
+                                : 0 }}</b>
+                        </span>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <b style="font-size:20px;">Market Cap</b>
+                        <span class="pull-right">
+                            <b>{{modalCtrl.detailView["market_cap_" + modalCtrl.selectedCurrencyLowerCase] | currency: modalCtrl.selectedCurrencySymbol
+                                : 0 }}</b>
+                        </span>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <b style="font-size:20px;">Circulating Supply</b>
+                        <span class="pull-right">
+                            <b>{{modalCtrl.detailView["available_supply"] | number: 2}} {{modalCtrl.detailView.symbol}}</b>
+                        </span>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <b style="font-size:20px;">Circulating Supply</b>
+                        <span class="pull-right">
+                            <b>{{modalCtrl.detailView["available_supply"] | number: 2}} {{modalCtrl.detailView.symbol}}</b>
+                        </span>
+                    </button>
+                    <button type="button" class="list-group-item list-group-item-action">
+                        <b style="font-size:20px;">Max Supply</b>
+                        <span class="pull-right">
+                            <b>{{modalCtrl.detailView["max_supply"] | number: 2}} {{modalCtrl.detailView.symbol}}</b>
+                        </span>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
